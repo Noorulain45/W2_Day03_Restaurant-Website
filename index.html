@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <!-- Toastify CSS for notifications -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"/>
+   <!-- Slick Carousel CSS for the reviews slider -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+   <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+   <!-- Slick Carousel Theme CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+   <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Page title -->
+    <title>Order.uK</title>
+    <!-- Tailwind configuration for custom colors -->
+    <script>
+    tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          Orange: "#FC8A06",
+        }
+      }
+    }
+  }
+</script>
+
+    <style>
+      /* keeps scrollbars unobtrusive while still accessible */
+      .no-scrollbar::-webkit-scrollbar {
+        height: 10px;
+      }
+      .no-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(17, 24, 39, 0.18);
+        border-radius: 999px;
+      }
+      .no-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+    </style>
+</head>
+<body class="font-poppins">
+   
+    <div class="container mx-auto">
+      <!-- Header -->
+       <header class="flex justify-between gap-x-3 md:gap-x-0 py-3 2xl:py-5 px-5 md:px-10 xl:px-24 text-xs lg:text-base 2xl:text-lg items-center relative">
+        <!-- Logo -->
+        <div>
+          <img src="./assets/LOGO 1.png" alt="Logo"/>
+        </div>
+
+        <!-- Desktop Navbar -->
+        <ul id="navbar" class="hidden lg:flex justify-between gap-x-10 2xl:gap-x-20"></ul>
+        <div class="gap-x-3 flex items-center">
+          
+            <!-- Mobile Menu Icon -->
+          <button id="menu-toggle" class="lg:hidden text-2xl ml-4">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <!-- Mobile Menu -->
+          <ul id="navbar" class="mobile-menu absolute top-full left-0 w-full bg-white shadow-md text-black px-5 py-4 space-y-3 text-base font-medium hidden lg:hidden z-50">
+            <li><a href="#" class="block hover:text-[#FFB800]">Home</a></li>
+            <li><a href="#" class="block hover:text-[#FFB800]">Shop</a></li>
+            <li><a href="#" class="block hover:text-[#FFB800]">About</a></li>
+            <li><a href="#" class="block hover:text-[#FFB800]">Contact</a></li>
+          </ul>
+          
+          <!-- Cart Button -->
+          <button id="show-cart-button" class="flex items-center gap-x-2">
+            <div
+              class="w-9 h-9 2xl:h-14 2xl:w-14 bg-black flex justify-center items-center rounded-full"
+            >
+              <img src="./assets/vectors/Cart.png" alt="cart" class="w-4 h-4" />
+            </div>
+            <p>Cart</p>
+          </button>
+        </div>
+      </header>
+    </div>
+
+    <!-- Landing Section  -->
+    <section class="relative w-[85%] lg:w-[950px] xl:w-[1250px] lg:h-[350px] 3xl:w-[1528px] 3xl:h-[477px] flex justify-center items-center mx-auto py-4 mt-8 px-5">
+      <!-- Background Image -->
+        <div class="absolute inset-0 w-full h-full">
+        <img src="./assets/burger-img.png" alt="Landing Background" class="w-full h-full object-cover"/>
+      </div>
+        <!-- Overlay for better text visibility -->
+      <div class="absolute inset-0 w-full h-full bg-[#03081FE5]/90"></div>
+      
+      <!-- Content -->
+      <div class="relative z-10 h-full flex flex-col md:flex-row items-center justify-center gap-x-28 gap-y-3 text-white">
+        <div class="flex flex-col gap-y-6 mt-10 lg:mt-16">
+          <p class="text-xl">I'm lovin'it!</p>
+          <h1 class="text-4xl 3xl:text-6xl">McDonald’s East London</h1>
+
+          <!--buttons for order completion and rider -->
+          <div class="flex items-center gap-x-4 text-[10px] xl:text-base 2xl:text-xl">
+            <button class="rounded-[30px] border-2 border-white hidden md:flex items-center gap-x-3 px-2 xl:px-5 py-1 2xl:py-2">
+              <img src="./assets/vectors/Order Completed.png" alt="" class="w-3 lg:w-8 h-3 lg:h-8"/>
+              <p>Minimum Order: 12 GBP</p>
+            </button>
+            <button class="rounded-[30px] border-2 border-white hidden md:flex items-center gap-x-3 px-2 xl:px-5 py-1 2xl:py-2">
+              <img src="./assets/vectors/Motocross.png" alt="" class="w-3 lg:w-8 h-3 lg:h-8"/>
+              <p>Delivery in 20-25 Minutes</p>
+            </button>
+          </div>
+        </div>
+
+        <!-- Image with review box overlay -->
+        <div class="w-[200px] md:w-[300px] lg:w-[400px] 3xl:h-auto 3xl:w-auto">
+          <img src="./assets/burger-img.png" alt="" />
+          <img src="./assets/vectors/Review box.png" alt="" class="-mt-12 -ml-8 lg:-mt-20 lg:-ml-12 3xl:-mt-36 3xl:-ml-16 w-12 lg:w-20 3xl:w-auto 3xl:h-auto"/>
+        </div>
+      </div>
+
+      <!-- Open until 3:00 AM box -->
+      <div class="bg-Orange absolute -bottom-4 lg:-bottom-2 left-0 text-white flex justify-between gap-x-4 rounded-lg px-6 xl:px-12 py-1 xl:py-3">
+        <img src="./assets/vectors/Clock.png" alt="" class="w-4 lg:w-7 h-4 lg:h-7" />
+        <p class="text-xs lg:text-xl">Open until 3:00 AM</p>
+      </div>
+    </section>
+    <!--Our 1st section ends here -->
+    
+    <!-- Search Section  -->
+    <section class="flex flex-col md:flex-row justify-between items-center w-[85%] lg:w-[950px] xl:w-[1250px] 3xl:w-[1528px] mx-auto mt-8 px-5">
+      <p class="text-black font-bold text-lg lg:text-2xl">
+        All Offers from McDonald’s East London
+      </p>
+      <div class="w-auto md:w-[280px] lg:h-10 border-2 rounded-3xl flex flex-row items-center justify-start gap-x-2 md:gap-x-4 px-2 py-3">
+        <img src="./assets/vectors/Search More.png" alt="" class="w-5 h-5"/>
+        <input id="search-input" type="text" class="focus:border-none focus:outline-none text-xs xl:text-base placeholder:text-xs" placeholder="Search from menu..."/>
+      </div>
+    </section>
+    <!--search section ends here-->
+
+    <!-- Menu Section  -->
+    <section class="w-full py-2 md:py-4 bg-Orange px-2 md:px-10 2xl:px-28 mt-10">
+      <div class="container mx-auto">
+        <ul id="menu-list" class="flex flex-wrap justify-center gap-2 md:justify-between p-2 font-semibold text-white text-[12px] xl:text-base"></ul>
+      </div>
+    </section>
+    <!-- Menu section ends here -->
+
+    <!-- Menu Slider (from cdemo) -->
+    <section class="w-[85%] lg:w-[950px] xl:w-[1250px] 3xl:w-[1528px] mx-auto mt-10 px-5 space-y-10">
+      <!-- Burgers -->
+      <div class="space-y-4" data-slider-category="Burgers">
+        <h2 class="text-[18px] font-semibold tracking-tight text-[#111827]">Burgers</h2>
+
+        <div class="menu-slider-wrapper relative rounded-[16px] bg-[#F5F7FB] p-6">
+          <button
+            type="button"
+            class="slider-prev absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_10px_25px_rgba(17,24,39,0.08)] ring-1 ring-[#E5E7EB] p-2 text-[#111827]/80 hover:text-[#111827] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FC8A06]"
+            aria-label="Previous"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            class="slider-next absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_10px_25px_rgba(17,24,39,0.08)] ring-1 ring-[#E5E7EB] p-2 text-[#111827]/80 hover:text-[#111827] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FC8A06]"
+            aria-label="Next"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <div
+            class="slider no-scrollbar grid grid-flow-col auto-cols-[300px] grid-rows-2 justify-center gap-6 overflow-x-auto scroll-smooth pr-2"
+            style="scroll-snap-type: x mandatory"
+          >
+            <article class="snap-start rounded-[14px] bg-white p-4 shadow-[0_10px_25px_rgba(17,24,39,0.08)] ring-1 ring-[#E5E7EB]">
+              <div class="flex gap-4">
+                <div class="min-w-0 flex-1">
+                  <h3 class="text-[14px] font-semibold leading-5 text-[#111827]">Big Mac</h3>
+                  <p class="mt-1 text-[12px] leading-4 text-[#6B7280]">Two patties, special sauce, cheese, lettuce.</p>
+                  <div class="mt-3 flex items-center justify-between">
+                    <p class="text-[13px] font-semibold text-[#111827]">$ 8.90</p>
+                  </div>
+                </div>
+                <div class="relative h-[78px] w-[78px] shrink-0 overflow-hidden rounded-[12px] bg-[#FFE6D5] ring-1 ring-[#F3D3C2]">
+                  <img src="./assets/Burger.png" alt="" class="h-full w-full object-cover" />
+                  <button
+                    type="button"
+                    class="absolute bottom-2 left-2 grid h-7 w-7 place-items-center rounded-full bg-black/0 text-[#111827] ring-1 ring-white/60 backdrop-blur hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FC8A06]"
+                    aria-label="Add item"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="snap-start rounded-[14px] bg-white p-4 shadow-[0_10px_25px_rgba(17,24,39,0.08)] ring-1 ring-[#E5E7EB]">
+              <div class="flex gap-4">
+                <div class="min-w-0 flex-1">
+                  <h3 class="text-[14px] font-semibold leading-5 text-[#111827]">Cheese Burger</h3>
+                  <p class="mt-1 text-[12px] leading-4 text-[#6B7280]">Beef patty, cheddar, pickles, house bun.</p>
+                  <div class="mt-3 flex items-center justify-between">
+                    <p class="text-[13px] font-semibold text-[#111827]">$ 7.40</p>
+                  </div>
+                </div>
+                <div class="relative h-[78px] w-[78px] shrink-0 overflow-hidden rounded-[12px] bg-[#FFE6D5] ring-1 ring-[#F3D3C2]">
+                  <img src="./assets/Burger.png" alt="" class="h-full w-full object-cover" />
+                  <button
+                    type="button"
+                    class="absolute bottom-2 left-2 grid h-7 w-7 place-items-center rounded-full bg-black/0 text-[#111827] ring-1 ring-white/60 backdrop-blur hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FC8A06]"
+                    aria-label="Add item"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="snap-start rounded-[14px] bg-white p-4 shadow-[0_10px_25px_rgba(17,24,39,0.08)] ring-1 ring-[#E5E7EB]">
+              <div class="flex gap-4">
+                <div class="min-w-0 flex-1">
+                  <h3 class="text-[14px] font-semibold leading-5 text-[#111827]">Double Burger</h3>
+                  <p class="mt-1 text-[12px] leading-4 text-[#6B7280]">Double beef, melted cheese, smoky mayo.</p>
+                  <div class="mt-3 flex items-center justify-between">
+                    <p class="text-[13px] font-semibold text-[#111827]">$ 10.20</p>
+                  </div>
+                </div>
+                <div class="relative h-[78px] w-[78px] shrink-0 overflow-hidden rounded-[12px] bg-[#FFE6D5] ring-1 ring-[#F3D3C2]">
+                  <img src="./assets/Burger.png" alt="" class="h-full w-full object-cover" />
+                  <button
+                    type="button"
+                    class="absolute bottom-2 left-2 grid h-7 w-7 place-items-center rounded-full bg-black/0 text-[#111827] ring-1 ring-white/60 backdrop-blur hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FC8A06]"
+                    aria-label="Add item"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="snap-start rounded-[14px] bg-white p-4 shadow-[0_10px_25px_rgba(17,24,39,0.08)] ring-1 ring-[#E5E7EB]">
+              <div class="flex gap-4">
+                <div class="min-w-0 flex-1">
+                  <h3 class="text-[14px] font-semibold leading-5 text-[#111827]">Chicken Burger</h3>
+                  <p class="mt-1 text-[12px] leading-4 text-[#6B7280]">Crispy chicken, slaw, spicy glaze.</p>
+                  <div class="mt-3 flex items-center justify-between">
+                    <p class="text-[13px] font-semibold text-[#111827]">$ 8.10</p>
+                  </div>
+                </div>
+                <div class="relative h-[78px] w-[78px] shrink-0 overflow-hidden rounded-[12px] bg-[#FFE6D5] ring-1 ring-[#F3D3C2]">
+                  <img src="./assets/burger-img.png" alt="" class="h-full w-full object-cover" />
+                  <button
+                    type="button"
+                    class="absolute bottom-2 left-2 grid h-7 w-7 place-items-center rounded-full bg-black/0 text-[#111827] ring-1 ring-white/60 backdrop-blur hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FC8A06]"
+                    aria-label="Add item"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="snap-start rounded-[14px] bg-white p-4 shadow-[0_10px_25px_rgba(17,24,39,0.08)] ring-1 ring-[#E5E7EB]">
+              <div class="flex gap-4">
+                <div class="min-w-0 flex-1">
+                  <h3 class="text-[14px] font-semibold leading-5 text-[#111827]">Spicy Burger</h3>
+                  <p class="mt-1 text-[12px] leading-4 text-[#6B7280]">Jalapeños, pepper jack, hot sauce.</p>
+                  <div class="mt-3 flex items-center justify-between">
+                    <p class="text-[13px] font-semibold text-[#111827]">$ 9.50</p>
+                  </div>
+                </div>
+                <div class="relative h-[78px] w-[78px] shrink-0 overflow-hidden rounded-[12px] bg-[#FFE6D5] ring-1 ring-[#F3D3C2]">
+                  <img src="./assets/burger-img.png" alt="" class="h-full w-full object-cover" />
+                  <button
+                    type="button"
+                    class="absolute bottom-2 left-2 grid h-7 w-7 place-items-center rounded-full bg-black/0 text-[#111827] ring-1 ring-white/60 backdrop-blur hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FC8A06]"
+                    aria-label="Add item"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="snap-start rounded-[14px] bg-white p-4 shadow-[0_10px_25px_rgba(17,24,39,0.08)] ring-1 ring-[#E5E7EB]">
+              <div class="flex gap-4">
+                <div class="min-w-0 flex-1">
+                  <h3 class="text-[14px] font-semibold leading-5 text-[#111827]">Classic Burger</h3>
+                  <p class="mt-1 text-[12px] leading-4 text-[#6B7280]">Beef, onion, lettuce, tomato, ketchup.</p>
+                  <div class="mt-3 flex items-center justify-between">
+                    <p class="text-[13px] font-semibold text-[#111827]">$ 7.90</p>
+                  </div>
+                </div>
+                <div class="relative h-[78px] w-[78px] shrink-0 overflow-hidden rounded-[12px] bg-[#FFE6D5] ring-1 ring-[#F3D3C2]">
+                  <img src="./assets/burger-img.png" alt="" class="h-full w-full object-cover" />
+                  <button
+                    type="button"
+                    class="absolute bottom-2 left-2 grid h-7 w-7 place-items-center rounded-full bg-black/0 text-[#111827] ring-1 ring-white/60 backdrop-blur hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FC8A06]"
+                    aria-label="Add item"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fries -->
+      <div class="space-y-4" data-slider-category="Fries">
+        <h2 class="text-[18px] font-semibold tracking-tight text-[#111827]">Fries</h2>
+
+        <div class="menu-slider-wrapper relative rounded-[16px] bg-[#F5F7FB] p-6">
+          <button
+            type="button"
+            class="slider-prev absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_10px_25px_rgba(17,24,39,0.08)] ring-1 ring-[#E5E7EB] p-2 text-[#111827]/80 hover:text-[#111827] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FC8A06]"
+            aria-label="Previous"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            class="slider-next absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_10px_25px_rgba(17,24,39,0.08)] ring-1 ring-[#E5E7EB] p-2 text-[#111827]/80 hover:text-[#111827] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FC8A06]"
+            aria-label="Next"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <div class="slider no-scrollbar grid grid-flow-col auto-cols-[300px] grid-rows-2 justify-center gap-6 overflow-x-auto scroll-smooth pr-2" style="scroll-snap-type: x mandatory">
+            <article class="snap-start rounded-[14px] bg-white p-4 shadow-[0_10px_25px_rgba(17,24,39,0.08)] ring-1 ring-[#E5E7EB]">
+              <div class="flex gap-4">
+                <div class="min-w-0 flex-1">
+                  <h3 class="text-[14px] font-semibold leading-5 text-[#111827]">French Fries</h3>
+                  <p class="mt-1 text-[12px] leading-4 text-[#6B7280]">Golden, crispy, lightly salted.</p>
+                  <div class="mt-3 flex items-center justify-between">
+                    <p class="text-[13px] font-semibold text-[#111827]">$ 3.20</p>
+                  </div>
+                </div>
+                <div class="relative h-[78px] w-[78px] shrink-0 overflow-hidden rounded-[12px] bg-[#FFE6D5] ring-1 ring-[#F3D3C2]">
+                  <img src="./assets/fries.png" alt="" class="h-full w-full object-cover" />
+                  <button
+                    type="button"
+                    class="absolute bottom-2 left-2 grid h-7 w-7 place-items-center rounded-full bg-black/0 text-[#111827] ring-1 ring-white/60 backdrop-blur hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FC8A06]"
+                    aria-label="Add item"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="snap-start rounded-[14px] bg-white p-4 shadow-[0_10px_25px_rgba(17,24,39,0.08)] ring-1 ring-[#E5E7EB]">
+              <div class="flex gap-4">
+                <div class="min-w-0 flex-1">
+                  <h3 class="text-[14px] font-semibold leading-5 text-[#111827]">Potato Wedges</h3>
+                  <p class="mt-1 text-[12px] leading-4 text-[#6B7280]">Seasoned wedges, crunchy outside.</p>
+                  <div class="mt-3 flex items-center justify-between">
+                    <p class="text-[13px] font-semibold text-[#111827]">$ 3.80</p>
+                  </div>
+                </div>
+                <div class="relative h-[78px] w-[78px] shrink-0 overflow-hidden rounded-[12px] bg-[#FFE6D5] ring-1 ring-[#F3D3C2]">
+                  <img src="./assets/fries.png" alt="" class="h-full w-full object-cover" />
+                  <button
+                    type="button"
+                    class="absolute bottom-2 left-2 grid h-7 w-7 place-items-center rounded-full bg-black/0 text-[#111827] ring-1 ring-white/60 backdrop-blur hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FC8A06]"
+                    aria-label="Add item"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="snap-start rounded-[14px] bg-white p-4 shadow-[0_10px_25px_rgba(17,24,39,0.08)] ring-1 ring-[#E5E7EB]">
+              <div class="flex gap-4">
+                <div class="min-w-0 flex-1">
+                  <h3 class="text-[14px] font-semibold leading-5 text-[#111827]">Curly Fries</h3>
+                  <p class="mt-1 text-[12px] leading-4 text-[#6B7280]">Spiraled fries with mild spice.</p>
+                  <div class="mt-3 flex items-center justify-between">
+                    <p class="text-[13px] font-semibold text-[#111827]">$ 4.10</p>
+                  </div>
+                </div>
+                <div class="relative h-[78px] w-[78px] shrink-0 overflow-hidden rounded-[12px] bg-[#FFE6D5] ring-1 ring-[#F3D3C2]">
+                  <img src="./assets/fries.png" alt="" class="h-full w-full object-cover" />
+                  <button
+                    type="button"
+                    class="absolute bottom-2 left-2 grid h-7 w-7 place-items-center rounded-full bg-black/0 text-[#111827] ring-1 ring-white/60 backdrop-blur hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FC8A06]"
+                    aria-label="Add item"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="snap-start rounded-[14px] bg-white p-4 shadow-[0_10px_25px_rgba(17,24,39,0.08)] ring-1 ring-[#E5E7EB]">
+              <div class="flex gap-4">
+                <div class="min-w-0 flex-1">
+                  <h3 class="text-[14px] font-semibold leading-5 text-[#111827]">Cheese Fries</h3>
+                  <p class="mt-1 text-[12px] leading-4 text-[#6B7280]">Loaded with warm cheese sauce.</p>
+                  <div class="mt-3 flex items-center justify-between">
+                    <p class="text-[13px] font-semibold text-[#111827]">$ 4.90</p>
+                  </div>
+                </div>
+                <div class="relative h-[78px] w-[78px] shrink-0 overflow-hidden rounded-[12px] bg-[#FFE6D5] ring-1 ring-[#F3D3C2]">
+                  <img src="./assets/fries.png" alt="" class="h-full w-full object-cover" />
+                  <button
+                    type="button"
+                    class="absolute bottom-2 left-2 grid h-7 w-7 place-items-center rounded-full bg-black/0 text-[#111827] ring-1 ring-white/60 backdrop-blur hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FC8A06]"
+                    aria-label="Add item"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="snap-start rounded-[14px] bg-white p-4 shadow-[0_10px_25px_rgba(17,24,39,0.08)] ring-1 ring-[#E5E7EB]">
+              <div class="flex gap-4">
+                <div class="min-w-0 flex-1">
+                  <h3 class="text-[14px] font-semibold leading-5 text-[#111827]">Chili Fries</h3>
+                  <p class="mt-1 text-[12px] leading-4 text-[#6B7280]">Topped with chili and cheese.</p>
+                  <div class="mt-3 flex items-center justify-between">
+                    <p class="text-[13px] font-semibold text-[#111827]">$ 5.20</p>
+                  </div>
+                </div>
+                <div class="relative h-[78px] w-[78px] shrink-0 overflow-hidden rounded-[12px] bg-[#FFE6D5] ring-1 ring-[#F3D3C2]">
+                  <img src="./assets/fries.png" alt="" class="h-full w-full object-cover" />
+                  <button
+                    type="button"
+                    class="absolute bottom-2 left-2 grid h-7 w-7 place-items-center rounded-full bg-black/0 text-[#111827] ring-1 ring-white/60 backdrop-blur hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FC8A06]"
+                    aria-label="Add item"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="snap-start rounded-[14px] bg-white p-4 shadow-[0_10px_25px_rgba(17,24,39,0.08)] ring-1 ring-[#E5E7EB]">
+              <div class="flex gap-4">
+                <div class="min-w-0 flex-1">
+                  <h3 class="text-[14px] font-semibold leading-5 text-[#111827]">Sweet Fries</h3>
+                  <p class="mt-1 text-[12px] leading-4 text-[#6B7280]">Sweet potato fries, crispy finish.</p>
+                  <div class="mt-3 flex items-center justify-between">
+                    <p class="text-[13px] font-semibold text-[#111827]">$ 4.30</p>
+                  </div>
+                </div>
+                <div class="relative h-[78px] w-[78px] shrink-0 overflow-hidden rounded-[12px] bg-[#FFE6D5] ring-1 ring-[#F3D3C2]">
+                  <img src="./assets/fries.png" alt="" class="h-full w-full object-cover" />
+                  <button
+                    type="button"
+                    class="absolute bottom-2 left-2 grid h-7 w-7 place-items-center rounded-full bg-black/0 text-[#111827] ring-1 ring-white/60 backdrop-blur hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FC8A06]"
+                    aria-label="Add item"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cold Drinks -->
+      <div class="space-y-4" data-slider-category="Cold drinks">
+        <h2 class="text-[18px] font-semibold tracking-tight text-[#111827]">Cold Drinks</h2>
+
+        <div class="menu-slider-wrapper relative rounded-[16px] bg-[#F5F7FB] p-6">
+          <button
+            type="button"
+            class="slider-prev absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_10px_25px_rgba(17,24,39,0.08)] ring-1 ring-[#E5E7EB] p-2 text-[#111827]/80 hover:text-[#111827] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FC8A06]"
+            aria-label="Previous"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            class="slider-next absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_10px_25px_rgba(17,24,39,0.08)] ring-1 ring-[#E5E7EB] p-2 text-[#111827]/80 hover:text-[#111827] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FC8A06]"
+            aria-label="Next"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <div class="slider no-scrollbar grid grid-flow-col auto-cols-[300px] grid-rows-2 justify-center gap-6 overflow-x-auto scroll-smooth pr-2" style="scroll-snap-type: x mandatory">
+            <article class="snap-start rounded-[14px] bg-white p-4 shadow-[0_10px_25px_rgba(17,24,39,0.08)] ring-1 ring-[#E5E7EB]">
+              <div class="flex gap-4">
+                <div class="min-w-0 flex-1">
+                  <h3 class="text-[14px] font-semibold leading-5 text-[#111827]">Strawberry Shake</h3>
+                  <p class="mt-1 text-[12px] leading-4 text-[#6B7280]">Creamy shake with strawberry.</p>
+                  <div class="mt-3 flex items-center justify-between">
+                    <p class="text-[13px] font-semibold text-[#111827]">$ 4.60</p>
+                  </div>
+                </div>
+                <div class="relative h-[78px] w-[78px] shrink-0 overflow-hidden rounded-[12px] bg-[#E8F0FF] ring-1 ring-[#D6E2FF]">
+                  <img src="./assets/cold drink.png" alt="" class="h-full w-full object-cover" />
+                  <button
+                    type="button"
+                    class="absolute bottom-2 left-2 grid h-7 w-7 place-items-center rounded-full bg-black/0 text-[#111827] ring-1 ring-white/60 backdrop-blur hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FC8A06]"
+                    aria-label="Add item"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="snap-start rounded-[14px] bg-white p-4 shadow-[0_10px_25px_rgba(17,24,39,0.08)] ring-1 ring-[#E5E7EB]">
+              <div class="flex gap-4">
+                <div class="min-w-0 flex-1">
+                  <h3 class="text-[14px] font-semibold leading-5 text-[#111827]">Iced Coffee</h3>
+                  <p class="mt-1 text-[12px] leading-4 text-[#6B7280]">Cold brew over ice, light sugar.</p>
+                  <div class="mt-3 flex items-center justify-between">
+                    <p class="text-[13px] font-semibold text-[#111827]">$ 3.90</p>
+                  </div>
+                </div>
+                <div class="relative h-[78px] w-[78px] shrink-0 overflow-hidden rounded-[12px] bg-[#E8F0FF] ring-1 ring-[#D6E2FF]">
+                  <img src="./assets/cold drink.png" alt="" class="h-full w-full object-cover" />
+                  <button
+                    type="button"
+                    class="absolute bottom-2 left-2 grid h-7 w-7 place-items-center rounded-full bg-black/0 text-[#111827] ring-1 ring-white/60 backdrop-blur hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FC8A06]"
+                    aria-label="Add item"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="snap-start rounded-[14px] bg-white p-4 shadow-[0_10px_25px_rgba(17,24,39,0.08)] ring-1 ring-[#E5E7EB]">
+              <div class="flex gap-4">
+                <div class="min-w-0 flex-1">
+                  <h3 class="text-[14px] font-semibold leading-5 text-[#111827]">Lemon Soda</h3>
+                  <p class="mt-1 text-[12px] leading-4 text-[#6B7280]">Sparkling lemon, extra refreshing.</p>
+                  <div class="mt-3 flex items-center justify-between">
+                    <p class="text-[13px] font-semibold text-[#111827]">$ 2.80</p>
+                  </div>
+                </div>
+                <div class="relative h-[78px] w-[78px] shrink-0 overflow-hidden rounded-[12px] bg-[#E8F0FF] ring-1 ring-[#D6E2FF]">
+                  <img src="./assets/cold drink.png" alt="" class="h-full w-full object-cover" />
+                  <button
+                    type="button"
+                    class="absolute bottom-2 left-2 grid h-7 w-7 place-items-center rounded-full bg-black/0 text-[#111827] ring-1 ring-white/60 backdrop-blur hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FC8A06]"
+                    aria-label="Add item"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="snap-start rounded-[14px] bg-white p-4 shadow-[0_10px_25px_rgba(17,24,39,0.08)] ring-1 ring-[#E5E7EB]">
+              <div class="flex gap-4">
+                <div class="min-w-0 flex-1">
+                  <h3 class="text-[14px] font-semibold leading-5 text-[#111827]">Mint Cooler</h3>
+                  <p class="mt-1 text-[12px] leading-4 text-[#6B7280]">Mint, lime, and crushed ice.</p>
+                  <div class="mt-3 flex items-center justify-between">
+                    <p class="text-[13px] font-semibold text-[#111827]">$ 3.10</p>
+                  </div>
+                </div>
+                <div class="relative h-[78px] w-[78px] shrink-0 overflow-hidden rounded-[12px] bg-[#E8F0FF] ring-1 ring-[#D6E2FF]">
+                  <img src="./assets/cold drink.png" alt="" class="h-full w-full object-cover" />
+                  <button
+                    type="button"
+                    class="absolute bottom-2 left-2 grid h-7 w-7 place-items-center rounded-full bg-black/0 text-[#111827] ring-1 ring-white/60 backdrop-blur hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FC8A06]"
+                    aria-label="Add item"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="snap-start rounded-[14px] bg-white p-4 shadow-[0_10px_25px_rgba(17,24,39,0.08)] ring-1 ring-[#E5E7EB]">
+              <div class="flex gap-4">
+                <div class="min-w-0 flex-1">
+                  <h3 class="text-[14px] font-semibold leading-5 text-[#111827]">Iced Tea</h3>
+                  <p class="mt-1 text-[12px] leading-4 text-[#6B7280]">Brewed tea, lemon slice, ice.</p>
+                  <div class="mt-3 flex items-center justify-between">
+                    <p class="text-[13px] font-semibold text-[#111827]">$ 2.70</p>
+                  </div>
+                </div>
+                <div class="relative h-[78px] w-[78px] shrink-0 overflow-hidden rounded-[12px] bg-[#E8F0FF] ring-1 ring-[#D6E2FF]">
+                  <img src="./assets/cold drink.png" alt="" class="h-full w-full object-cover" />
+                  <button
+                    type="button"
+                    class="absolute bottom-2 left-2 grid h-7 w-7 place-items-center rounded-full bg-black/0 text-[#111827] ring-1 ring-white/60 backdrop-blur hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FC8A06]"
+                    aria-label="Add item"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="snap-start rounded-[14px] bg-white p-4 shadow-[0_10px_25px_rgba(17,24,39,0.08)] ring-1 ring-[#E5E7EB]">
+              <div class="flex gap-4">
+                <div class="min-w-0 flex-1">
+                  <h3 class="text-[14px] font-semibold leading-5 text-[#111827]">Vanilla Shake</h3>
+                  <p class="mt-1 text-[12px] leading-4 text-[#6B7280]">Classic vanilla, thick & creamy.</p>
+                  <div class="mt-3 flex items-center justify-between">
+                    <p class="text-[13px] font-semibold text-[#111827]">$ 4.40</p>
+                  </div>
+                </div>
+                <div class="relative h-[78px] w-[78px] shrink-0 overflow-hidden rounded-[12px] bg-[#E8F0FF] ring-1 ring-[#D6E2FF]">
+                  <img src="./assets/cold drink.png" alt="" class="h-full w-full object-cover" />
+                  <button
+                    type="button"
+                    class="absolute bottom-2 left-2 grid h-7 w-7 place-items-center rounded-full bg-black/0 text-[#111827] ring-1 ring-white/60 backdrop-blur hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FC8A06]"
+                    aria-label="Add item"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+    <!-- New Section for information  -->
+    <section class="bg-white py-12 w-full md:px-6 lg:px-10">
+      <div class="mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 bg-[#FBFBFB] py-10 min-h-full rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
+          
+            <!-- Delivery Information -->
+          <div class="p-6 flex flex-col justify-between">
+            <h2 class="text-xl font-bold mb-4 text-gray-800 flex items-center gap-2">
+              <img src="./assets/vectors/Tracking.png" alt="" /> Delivery Information
+            </h2>
+            <ul class="text-gray-700 space-y-3">
+              <li>
+                <strong>Monday:</strong> 12:00 AM–3:00 AM, 8:00 AM–3:00 AM
+              </li>
+              <li><strong>Tuesday:</strong> 8:00 AM–3:00 AM</li>
+              <li><strong>Wednesday:</strong> 8:00 AM–3:00 AM</li>
+              <li><strong>Thursday:</strong> 8:00 AM–3:00 AM</li>
+              <li><strong>Friday:</strong> 8:00 AM–3:00 AM</li>
+              <li><strong>Saturday:</strong> 8:00 AM–3:00 AM</li>
+              <li><strong>Sunday:</strong> 8:00 AM–12:00 AM</li>
+            </ul>
+            <p class="mt-4 text-gray-700">
+              <strong>Estimated time until delivery:</strong> 20 min
+            </p>
+          </div>
+
+          <!-- Contact Information -->
+          <div class="p-6 flex flex-col justify-between">
+            <h2 class="text-xl font-bold mb-4 text-gray-800 flex items-center gap-2">
+              <img src="./assets/vectors/ID Verified.png" alt="" /> Contact Information
+            </h2>
+            <p class="text-gray-700 mb-4 leading-10 text-wrap pr-12">
+              If you have allergies or other dietary restrictions, please
+              contact the restaurant. The restaurant will provide food-specific
+              information upon request.
+            </p>
+            <div class="text-gray-700 space-y-1">
+              <p><strong>Phone number:</strong> +934443-43</p>
+              <p>
+                <strong>Website:</strong>
+                <a href="http://mcdonalds.uk/" class="text-blue-500 hover:underline">
+                  http://mcdonalds.uk/
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <!-- Operational Times -->
+          <div class="bg-[#03081F] text-white p-6 flex flex-col justify-between rounded-r-2xl">
+            <h2 class="text-xl font-bold flex items-center gap-2">
+              <img src="./assets/vectors/Clock.png" alt=""/> Operational Times
+            </h2>
+            <ul class="space-y-3">
+              <li><strong>Monday:</strong> 8:00 AM–3:00 AM</li>
+              <li><strong>Tuesday:</strong> 8:00 AM–3:00 AM</li>
+              <li><strong>Wednesday:</strong> 8:00 AM–3:00 AM</li>
+              <li><strong>Thursday:</strong> 8:00 AM–3:00 AM</li>
+              <li><strong>Friday:</strong> 8:00 AM–3:00 AM</li>
+              <li><strong>Saturday:</strong> 8:00 AM–3:00 AM</li>
+              <li><strong>Sunday:</strong> 8:00 AM–3:00 AM</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <section class="bg-gray-100 py-12 px-4 sm:px-6 lg:px-8 font-sans">
+
+  <!-- Header Row -->
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-10">
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-black">
+      Know more about us!
+    </h2>
+
+    <nav class="flex flex-wrap gap-4 text-sm font-medium text-gray-600">
+      <a href="#" class="border border-Orange rounded-full px-5 py-2 text-gray-900 font-semibold hover:bg-Orange hover:text-white transition">
+        Frequent Questions
+      </a>
+      <a href="#" class="hover:text-gray-900 transition">Who we are?</a>
+      <a href="#" class="hover:text-gray-900 transition">Partner Program</a>
+      <a href="#" class="hover:text-gray-900 transition">Help & Support</a>
+    </nav>
+  </div>
+
+  <!-- Main Card -->
+  <div class="max-w-7xl mx-auto bg-[#03081F] rounded-2xl p-6 sm:p-10 flex flex-col lg:flex-row gap-10">
+
+    <!-- Left: FAQ -->
+    <div class="lg:w-1/3 flex-col gap-6 flex justify-center">
+      <button class=" text-center bg-orange-500 hover:bg-orange-600 transition text-black font-bold rounded-full px-8 py-4 text-base w-full sm:w-fit mx-auto lg:mx-0">
+        How does Order.UK work?
+      </button>
+
+      <p class="text-white text-sm font-semibold cursor-pointer hover:text-orange-400 transition text-center">
+        What payment methods are accepted?
+      </p>
+      <p class="text-white text-sm font-semibold cursor-pointer hover:text-orange-400 transition text-center">
+        Can I track my order in real-time?
+      </p>
+      <p class="text-white text-sm font-semibold cursor-pointer hover:text-orange-400 transition text-center">
+        Are there any special discounts or promotions available?
+      </p>
+      <p class="text-white text-sm font-semibold cursor-pointer hover:text-orange-400 transition text-center">
+        Is Order.UK available in my area?
+      </p>
+    </div>
+
+    <!-- Divider (hidden on mobile) -->
+    <div class="hidden lg:block w-px bg-gray-600"></div>
+
+    <!-- Right Content -->
+    <div class="flex-1 flex flex-col gap-10">
+
+      <!-- Step Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Card 1 -->
+        <div class="bg-gray-100 rounded-2xl p-6 flex flex-col items-center text-center gap-4">
+          <h3 class="font-bold text-gray-900 text-base">Place an Order!</h3>
+          <div class="w-20 h-20 flex items-center justify-center">
+            <!-- SVG kept same -->
+             <img src="./assets/order-food 1.png" alt="">
+          </div>
+          <p class="text-gray-500 text-sm">
+            Place order through our website or Mobile app
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-gray-100 rounded-2xl p-6 flex flex-col items-center text-center gap-4">
+          <h3 class="font-bold text-gray-900 text-base">Track Progress</h3>
+          <div class="w-20 h-20 flex items-center justify-center">
+            <!-- SVG kept same -->
+             <img src="./assets/trackorder.png" alt="">
+          </div>
+          <p class="text-gray-500 text-sm">
+            You can track your order status with delivery time
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-gray-100 rounded-2xl p-6 flex flex-col items-center text-center gap-4">
+          <h3 class="font-bold text-gray-900 text-base">Get your Order!</h3>
+          <div class="w-20 h-20 flex items-center justify-center">
+            <!-- SVG kept same -->
+             <img src="./assets/getorder.png" alt="">
+          </div>
+          <p class="text-gray-500 text-sm">
+            Receive your order at lightning fast speed!
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Description -->
+      <p class="text-white text-sm sm:text-base text-center leading-relaxed max-w-3xl mx-auto">
+        Order.UK simplifies the food ordering process. Browse through our diverse menu,
+        select your favorite dishes, and proceed to checkout. Your delicious meal will be
+        on its way to your doorstep in no time!
+      </p>
+    </div>
+  </div>
+</section>
+</section>
+
+
+    <!-- Customer reviews section -->
+    <!-- Slider  -->
+    <section class="py-2 lg:py-12 bg-[#D9D9D9] h-full lg:h-[500px] 2xl:h-[600px] mt-16">
+      <div class="container mx-auto px-12">
+        <!-- Header + Arrows -->
+        <div class="flex justify-between items-center mb-12 pt-2 lg:pt-5 relative">
+          <h2 class="text-3xl font-bold">Customer Reviews</h2>
+          <!-- Arrow controls aligned properly -->
+          <div class="flex items-center w-max gap-x-2 md:absolute md:top-1/2 md:-translate-y-1/2 md:right-4 z-10">
+            <button type="button" class=" h-10 w-10 rounded-full bg-[#FFB800] hidden md:block items-center justify-center" onclick="prevArrow()">
+              <i class="fa-solid fa-angle-left text-black"></i>
+            </button>
+            
+            <button type="button" class=" h-10 w-10  rounded-full bg-[#FFB800] hidden md:flex items-center justify-center" onclick="nextArrow()">
+              <i class="fa-solid fa-angle-right text-black"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Reviews Slider -->
+        <div class="autoplay reviews-slider">
+          <!-- Card 1 -->
+          <div class="px-1 md:px-2">
+            <div class="bg-white p-6 rounded-lg shadow-md 3xl:w-[496px] 3xl:h-[274px]">
+              <div class="flex items-center mb-4">
+               <!-- Reviewer Avatar and Info -->
+                <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                  <img src="./assets/Avatars/Avatar1.png" alt="Reviewer" class="w-full h-full object-cover"/>
+                </div>
+                <div class="flex justify-between gap-x-8 w-full text-xs md:text-sm">
+                    <!-- Reviewer Name and Location with left border -->
+                  <div class="border-l-2 border-[#FC8A06] pl-2">
+                    <h4 class="font-bold">St Glx</h4>
+                    <p class="text-sm text-[#FC8A06] mb-2">South London</p>
+                  </div>
+                  <div class="ml-auto text-right text-[#FC8A06]">
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <p class="text-xs text-gray-500">24th September, 2023</p>
+                  </div>
+                </div>
+              </div>
+              <p class="text-gray-800 text-xs md:text-sm leading-relaxed">
+                The positive aspect was undoubtedly the efficiency of the
+                service. The queue moved quickly, the staff was friendly, and
+                the food was up to the usual McDonald's standard – hot and
+                satisfying.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="px-1 md:px-2">
+            <div class="bg-white p-6 rounded-lg shadow-md 3xl:w-[496px] 3xl:h-[274px]">
+              <div class="flex items-center mb-4">
+
+               <!-- Reviewer Avatar and Info -->
+                <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                  <img src="./assets/Avatars/Avatar1.png" alt="Reviewer" class="w-full h-full object-cover"/>
+                </div>
+                <!-- Reviewer Name and Location with left border -->
+                <div class="flex justify-between gap-x-8 w-full text-xs md:text-sm">
+                  <div class="border-l-2 border-[#FC8A06] pl-2">
+                    <h4 class="font-bold">St Glx</h4>
+                    <p class="text-sm text-[#FC8A06] mb-2">South London</p>
+                  </div>
+                  <div class="ml-auto text-right text-[#FC8A06]">
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <p class="text-xs text-gray-500">24th September, 2023</p>
+                  </div>
+                </div>
+              </div>
+              <p class="text-gray-800 text-xs md:text-sm leading-relaxed">
+                The positive aspect was undoubtedly the efficiency of the
+                service. The queue moved quickly, the staff was friendly, and
+                the food was up to the usual McDonald's standard – hot and
+                satisfying.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="px-1 md:px-2">
+            <div
+              class="bg-white p-6 rounded-lg shadow-md 3xl:w-[496px] 3xl:h-[274px]">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                  <img src="./assets/Avatars/Avatar1.png" alt="Reviewer" class="w-full h-full object-cover"/>
+                </div>
+                <div class="flex justify-between gap-x-8 w-full text-xs md:text-sm">
+                  <div class="border-l-2 border-[#FC8A06] pl-2">
+                    <h4 class="font-bold">St Glx</h4>
+                    <p class="text-sm text-[#FC8A06] mb-2">South London</p>
+                  </div>
+                  <div class="ml-auto text-right text-[#FC8A06]">
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <p class="text-xs text-gray-500">24th September, 2023</p>
+                  </div>
+                </div>
+              </div>
+              <p class="text-gray-800 text-xs md:text-sm leading-relaxed">
+                The positive aspect was undoubtedly the efficiency of the
+                service. The queue moved quickly, the staff was friendly, and
+                the food was up to the usual McDonald's standard – hot and
+                satisfying.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="px-1 md:px-2">
+            <div class="bg-white p-6 rounded-lg shadow-md 3xl:w-[496px] 3xl:h-[274px]">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                  <img src="../assets/sliderimage.png" alt="Reviewer" class="w-full h-full object-cover"/>
+                </div>
+                <div class="flex justify-between gap-x-8 w-full text-xs md:text-sm">
+                  <div class="border-l-2 border-[#FC8A06] pl-2">
+                    <h4 class="font-bold">St Glx</h4>
+                    <p class="text-sm text-[#FC8A06] mb-2">South London</p>
+                  </div>
+                  <div class="ml-auto text-right text-[#FC8A06]">
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <p class="text-xs text-gray-500">24th September, 2023</p>
+                  </div>
+                </div>
+              </div>
+              <p class="text-gray-800 text-xs md:text-sm leading-relaxed">
+                The positive aspect was undoubtedly the efficiency of the
+                service. The queue moved quickly, the staff was friendly, and
+                the food was up to the usual McDonald's standard – hot and
+                satisfying.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="w-full flex justify-center mt-6 -mb-10 md:-mb-16 lg:-mb-1 lg:mt-16 2xl:mt-24 h-16 md:h-[100px] 2xl:w-[153px] 2xl:h-[178px]">
+          <img src="./assets/vectors/Review box.png" alt="" class=" "/>
+        </div>
+      </div>
+    </section>
+
+    <!-- Restaurant Section  -->
+    <div class="container mx-auto py-20">
+      <section class="px-6 md:px-12 lg:px-24 py-8">
+        <h2 class="text-xl md:text-3xl 2xl:text-[44px] font-bold mb-6">
+          Similar Restaurants
+        </h2>
+        <div class="flex flex-wrap justify-between gap-3 pt-10">
+          <!-- Restaurant Cards -->
+           <!--Macdonald card-->
+          <div class="w-24 md:w-28 lg:w-32 3xl:w-[236px] flex flex-col items-center bg-white rounded-lg overflow-hidden shadow-md">
+            <img src="./assets/Macdonalds.png" alt="McDonald's London" class="w-full h-full object-contain"/>
+            <p class="bg-orange-500 text-white text-center text-[9px] font-semibold md:text-xs py-1 lg:py-2 xl:py-4 w-full">
+              McDonald's London
+            </p>
+          </div>
+
+             <!-- Papa Johns card -->
+          <div class="w-24 md:w-28 lg:w-32 3xl:w-[236px] flex flex-col items-center bg-white rounded-lg overflow-hidden shadow-md">
+            <img src="./assets/PapaJhons.png" alt="Papa Johns" class="w-full h-full object-contain"/>
+            <p class="bg-orange-500 text-white text-center text-[10px] font-semibold md:text-xs py-1 lg:py-2 xl:py-4 w-full">
+              Papa Johns
+            </p>
+          </div>
+
+               <!-- KFC card -->
+          <div class="w-24 md:w-28 lg:w-32 3xl:w-[236px] flex flex-col items-center bg-white rounded-lg overflow-hidden shadow-md">
+            <img src="./assets/kfc.png" alt="KFC West London" class="w-full h-full object-contain"/>
+            <p class="bg-orange-500 text-white text-center text-[10px] font-semibold md:text-xs py-1 lg:py-2 xl:py-4 w-full">
+              KFC West London
+            </p>
+          </div>
+
+              <!-- Texas Chicken card -->
+          <div class="w-24 md:w-28 lg:w-32 3xl:w-[236px] flex flex-col items-center bg-white rounded-lg overflow-hidden shadow-md">
+            <img src="./assets/txes.png" alt="Texas Chicken" class="w-full h-full object-contain"/>
+            <p class="bg-orange-500 text-white text-center text-[10px] font-semibold md:text-xs py-1 lg:py-2 xl:py-4 w-full">
+              Texas Chicken
+            </p>
+          </div>
+
+          <!-- Burger King card -->
+          <div class="w-24 md:w-28 lg:w-32 3xl:w-[236px] flex flex-col items-center bg-white rounded-lg overflow-hidden shadow-md">
+            <img src="./assets/burgur king.png" alt="Burger King" class="w-full h-full object-contain"/>
+            <p class="bg-orange-500 text-white text-center text-[10px] font-semibold md:text-xs py-1 lg:py-2 xl:py-4 w-full">
+              Burger King
+            </p>
+          </div>
+
+          <!-- Shaurma card -->
+          <div class="w-24 md:w-28 lg:w-32 3xl:w-[236px] flex flex-col items-center bg-white rounded-lg overflow-hidden shadow-md">
+            <img src="./assets/shawarma.png" alt="Shaurma 1" class="w-full h-full object-contain"/>
+            <p class="bg-orange-500 text-white text-center text-[10px] font-semibold md:text-xs py-1 lg:py-2 xl:py-4 w-full">
+              Shaurma 1
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer  -->
+    <footer class="w-full">
+      <div class="bg-[#D9D9D9] bg-opacity-60 pt-8 md:pt-12 mx-auto">
+        <div class="container mx-auto px-4 pb-6 md:pb-8">
+          <!-- Mobile: Single column, Desktop: 4 columns -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            
+            <!-- Column 1: Logo & App Buttons -->
+            <div class="flex flex-col items-center md:items-start">
+              <div class="logo">
+                <img src="./assets/LOGO 2.png" class="w-[160px] xl:w-[200px] 2xl:w-[268px]" alt="Company Logo"/>
+              </div>
+              <!-- App download buttons -->
+              <div class="btns flex gap-3 md:gap-4 mt-6 md:mt-8">
+                <button class="w-[100px] 2xl:w-[178px] h-[45px] md:h-[50px] rounded-sm bg-black flex items-center justify-center">
+                  <img src="./assets/vectors/apple v.png" class="object-contain h-[60%] md:h-full" alt="Download on App Store"/>
+                </button>
+
+                <!-- Google Play button -->
+                <button class="w-[100px] 2xl:w-[178px] h-[45px] md:h-[50px] bg-black rounded-sm flex items-center justify-center">
+                  <img src="./assets/vectors/playstore.png" class="object-contain h-[60%] md:h-full" alt="Get on Google Play"/>
+                </button>
+              </div>
+
+              <!-- #region -->
+              <p class="text-xs md:text-sm mt-4 md:mt-6 text-center md:text-left max-w-[280px] md:max-w-[311px]">
+                Company # 490039-445, Registered with House of companies.
+              </p>
+            </div>
+
+            <!-- Column 2: Newsletter -->
+            <div class="mt-6 md:mt-0">
+              <h4 class="text-base md:text-lg font-bold mb-3 md:mb-4">
+                Get Exclusive Deals in your inbox
+              </h4>
+              <!-- search box and subscribe button -->
+              <form class="flex h-[40px] 2xl:h-[59px] rounded-full overflow-hidden bg-[#D9D9D9] w-auto">
+                <input type="email" placeholder="youremail@gmail.com" required class="bg-[#D9D9D9] px-4 xl:px-6 w-full border-none outline-none text-xs 2xl:text-base"/>
+                
+                <button class="text-xs 2xl:text-base rounded-full font-medium h-full w-[100px] lg:w-[80px] 2xl:w-[171px] bg-Orange text-white shrink-0">
+                  Subscribe
+                </button>
+              </form>
+
+              <!-- Email policy and social media icons -->
+              <p class="text-xs mt-2 md:mt-2">
+                we won't spam, read our
+                <a href="#" class="underline">email policy</a>
+              </p>
+              <div class="flex gap-3 md:gap-4 mt-3 md:mt-4">
+                <img src="./assets/vectors/Facebook.png" alt="Facebook" class="h-8 w-8 md:h-10 md:w-10"/>
+                <img src="./assets/vectors/Instagram.png" alt="Instagram" class="h-8 w-8 md:h-10 md:w-10"/>
+                <img src="./assets/vectors/TikTok.png" alt="TikTok" class="h-8 w-8 md:h-10 md:w-10"/>
+                <img src="./assets/vectors/Snapchat.png" alt="Snapchat" class="h-8 w-8 md:h-10 md:w-10"/>
+              </div>
+            </div>
+
+            <!-- Column 3: Legal Pages -->
+            <div class="mt-6 md:mt-0">
+              <h4 class="text-base md:text-lg font-bold mb-3 md:mb-4">
+                Legal Pages
+              </h4>
+              <ul class="space-y-1 md:space-y-2">
+                <li>
+                  <a href="#" class="text-xs md:text-sm underline hover:no-underline">Terms and conditions</a>
+                </li>
+                <li>
+                  <a href="#" class="text-xs md:text-sm underline hover:no-underline">Privacy</a>
+                </li>
+                <li>
+                  <a href="#" class="text-xs md:text-sm underline hover:no-underline">Cookies</a>
+                </li>
+                <li>
+                  <a href="#" class="text-xs md:text-sm underline hover:no-underline">Modern Slavery Statement</a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Column 4: Important Links -->
+            <div class="mt-6 md:mt-0">
+              <h4 class="text-base md:text-lg font-bold mb-3 md:mb-4">
+                Important Links
+              </h4>
+              <ul class="space-y-1 md:space-y-2">
+                <li>
+                  <a href="#" class="text-xs md:text-sm underline hover:no-underline">Get Help</a>
+                </li>
+                <li>
+                  <a href="#" class="text-xs md:text-sm underline hover:no-underline">Add your restaurant</a>
+                </li>
+                <li>
+                  <a href="#" class="text-xs md:text-sm underline hover:no-underline">Sign up to deliver</a>
+                </li>
+                <li>
+                  <a href="#" class="text-xs md:text-sm underline hover:no-underline">Create a business account</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Copyright Section -->
+        <div class="w-full bg-[#03081F] py-3 md:py-4">
+          <div class="container mx-auto px-4 text-white">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+              <p class="text-xs md:text-sm mb-2 md:mb-0">
+                Order.uk Copyright 2025, All Rights Reserved
+              </p>
+              <ul class="flex flex-wrap gap-2 md:gap-4 text-xs md:text-sm">
+                <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+                <li><a href="#" class="hover:underline">Terms</a></li>
+                <li><a href="#" class="hover:underline">Pricing</a></li>
+                <li>
+                  <a href="#" class="hover:underline">Do not sell or share my personal information</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Cart  -->
+    <!-- MODAL OVERLAY -->
+    <div id="cart-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 overflow-y-auto">
+      <div class="min-h-screen flex items-center justify-center p-6">
+        <!-- CART MODAL -->
+        <div id="cart-modal" class="bg-white w-full max-w-3xl p-6 rounded-xl shadow-lg space-y-4 relative">
+          <!-- Close Button -->
+          <div class="absolute -top-2 right-0">
+            <button id="cart-toggle" class="bg-orange-yellow text-white font-extrabold py-1 px-3 rounded-full">
+              x
+            </button>
+          </div>
+
+          <!-- Image -->
+          <div>
+            <img src="../assets/cartImage.png" alt="" />
+          </div>
+
+          <!-- Title -->
+          <h2 class="text-xl font-bold">Your Order</h2>
+
+          <!-- Items -->
+          <div id="cart-items" class="space-y-4"></div>
+
+          <!-- Footer -->
+          <div class="flex justify-between items-center border-t pt-4">
+            <p class="font-semibold text-lg">
+              Total to pay:
+              <span id="cart-total" class="text-orange-500">£0.00</span>
+            </p>
+            <div class="space-x-2">
+              <button id="cart-back-button" class="underline text-sm" type="button">Take me back</button>
+              <button class="bg-green-600 text-white px-4 py-2 rounded">
+                Next Step
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS Section  -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".reviews-slider").slick({
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 3000,
+          arrows: false,
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 2,
+              },
+            },
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 1,
+              },
+            },
+          ],
+        });
+      });
+
+      function nextArrow() {
+        $(".reviews-slider").slick("slickNext");
+      }
+
+      function prevArrow() {
+        $(".reviews-slider").slick("slickPrev");
+      }
+    </script>
+
+<!-- Connecting our js files-->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="./js logics/NavBar_logic.js"></script>
+    <script src="./js logics/Menu_list.js"></script>
+    <script src="./js logics/Product_logic.js"></script>
+    <script src="./js logics/cart_logic.js"></script>
+
+    <script>
+      (function () {
+        function setupSlider(wrapper) {
+          const track = wrapper.querySelector(".slider");
+          const prev = wrapper.querySelector(".slider-prev");
+          const next = wrapper.querySelector(".slider-next");
+          if (!track || !prev || !next) return;
+
+          function getStepPx() {
+            const first = track.querySelector(".snap-start");
+            if (!first) return 320;
+            const styles = getComputedStyle(track);
+            const gap = Number.parseFloat(styles.columnGap || styles.gap || "0") || 0;
+            return first.getBoundingClientRect().width + gap;
+          }
+
+          function scrollByColumns(columns) {
+            track.scrollBy({ left: Math.round(getStepPx() * columns), behavior: "smooth" });
+          }
+
+          prev.addEventListener("click", () => scrollByColumns(-3));
+          next.addEventListener("click", () => scrollByColumns(3));
+
+          const updateButtons = () => {
+            const max = track.scrollWidth - track.clientWidth;
+            const x = track.scrollLeft;
+            prev.style.opacity = x <= 2 ? "0" : "1";
+            prev.style.pointerEvents = x <= 2 ? "none" : "auto";
+            next.style.opacity = x >= max - 2 ? "0" : "1";
+            next.style.pointerEvents = x >= max - 2 ? "none" : "auto";
+          };
+
+          track.addEventListener("scroll", updateButtons, { passive: true });
+          window.addEventListener("resize", updateButtons);
+          requestAnimationFrame(updateButtons);
+        }
+
+        document.querySelectorAll(".menu-slider-wrapper").forEach(setupSlider);
+      })();
+    </script>
+
+  </body>
+</html>
